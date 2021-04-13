@@ -7,8 +7,8 @@ const crawl = ({ url, callback, params }) => {
         axios
             .get(url)
             .then((response) => {
-                callback({ response, url, params });
-                resolve();
+                const res = callback({ response, url, params });
+                resolve(res);
             })
             .catch((e) => {
                 reject(e);
