@@ -69,6 +69,11 @@ const discover = async ({ domains, count, startTime, batchSize, timeout }) => {
                     promiseArray.length - promiseFulfilled
                 } [avg speed]: ${(domains.length / time).toFixed(2)} domains/sec `
             );
+            // console.log(
+            //     `Iteration ${count}: ${domains.length} Domains Found [${time} sec] [Errors]: ${
+            //         promiseArray.length - promiseFulfilled
+            //     } [avg speed]: ${(domains.length / time).toFixed(2)} domains/sec `
+            // );
             return { time, total: domains.length, timeouts: timeoutCount };
         })
         .catch((e) => {
@@ -96,10 +101,6 @@ const discoverBot = async ({ domains, batchSize, timeout }) => {
             );
             prevTime = res.time;
             prevTotal = res.total;
-            // if (count == 12) {
-            // break;
-            // fs.appendFileSync('./logs.txt', JSON.stringify(domains));
-            // }
         } catch (e) {
             console.log(e);
         }
